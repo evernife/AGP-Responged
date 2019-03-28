@@ -22,12 +22,12 @@ public class AGPConfig {
     @SuppressWarnings("CanBeFinal")
     @ConfigSerializable
     public static class Announcements {
-        //@Setting(comment = "Whether or not the AGP announcement message is enabled.")
-        //public static boolean announcementEnabled = true;
+        //@Setting(comment = "The AGP announcement message. (Supports color formatting codes)")
+        //public static String announcementMessage = "&7This server is running &bAGP Responged &7created by &bAnDwHaT5! &7Use &b/GymList &7to see what Gyms the server has to offer!";
 
         @Setting(comment = "The prefix AGP will use in all chat messages.")
         public static String agpPrefix = "&f[&dAGP-R&f] ";
-        
+
         //@Setting(comment = "The time in ticks between each AGP announcement message.")
         //public static int announcementTimer = 16_800;
 

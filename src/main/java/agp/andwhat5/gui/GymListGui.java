@@ -39,7 +39,7 @@ public class GymListGui {
 
         View view = View.builder()
                 .archetype(InventoryArchetypes.DOUBLE_CHEST)
-                .property(InventoryTitle.of(toText("&8Ginásios Disponíveis", false)))
+                .property(InventoryTitle.of(toText("&8Available Gyms", false)))
                 .build(AGP.getInstance().container);
         view.open(player);
 
@@ -117,17 +117,16 @@ public class GymListGui {
         itemStack.offer(Keys.DISPLAY_NAME, toText("&d\u2605 &b" + gym.Name + "&d \u2605", false));
 
         ArrayList<Text> lore = new ArrayList<>();
-        lore.add(toText("&7Gym Status: &b" + (gym.Status.equals(GymStruc.EnumStatus.CLOSED) ? "&4Fechado" : gym.Status.equals(GymStruc.EnumStatus.OPEN) ? "&2Aberto" : "&eNPC Mode"), false));
-        lore.add(toText("&7Requisitos: &b" + (gym.Requirement.equals("null") ? "Nada" : gym.Requirement), false));
-        lore.add(toText("&7Level Minimo: &b" + (gym.LevelCap == 0 ? "None" : ""+gym.LevelCap), false));
-        lore.add(toText("&7Lideres:", false));
+        lore.add(toText("&7Gym Status: &b" + (gym.Status.equals(GymStruc.EnumStatus.CLOSED) ? "&4Closed" : gym.Status.equals(GymStruc.EnumStatus.OPEN) ? "&2Open" : "&eNPC Mode"), false));
+        lore.add(toText("&7Requires: &b" + (gym.Requirement.equals("null") ? "None" : gym.Requirement), false));
+        lore.add(toText("&7Level Cap: &b" + (gym.LevelCap == 0 ? "None" : ""+gym.LevelCap), false));
+        lore.add(toText("&7Leaders:", false));
 
-        if(gym.NPCAmount > 0) {
-            lore.add(toText("  &2NPC " + (gym.NPCAmount > 1 ? "(" + gym.NPCAmount + ")" : "") , false));
+        if (gym.NPCAmount > 0) {
+            lore.add(toText("  &2NPC " + (gym.NPCAmount > 1 ? "(" + gym.NPCAmount + ")" : ""), false));
         }
 
-        if(!gym.PlayerLeaders.isEmpty())
-        {
+        if (!gym.PlayerLeaders.isEmpty()) {
             for (int i = 0; i < gym.PlayerLeaders.size(); i++) {
                 lore.add(toText("  " + (gym.OnlineLeaders.contains(gym.PlayerLeaders.get(i)) ? "&2" : "&4") + getNameFromUUID(gym.PlayerLeaders.get(i)), false));
             }
@@ -138,7 +137,7 @@ public class GymListGui {
         Consumer<Action.Click> clickConsumer = click -> Task.builder().execute(task -> {
             if(gym.Lobby != null) {
                 setPosition(player, gym.Lobby, gym.worldUUID);
-                player.sendMessage(toText("&7Você foi teleportado para o lobby do ginásio [&b" + gym.Name + "]!", true));
+                player.sendMessage(toText("&7Teleported to the &b" + gym.Name + " &7Gym lobby!", true));
             }
         }).submit(AGP.getInstance());
 
