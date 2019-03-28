@@ -226,6 +226,7 @@ public class AGP {
     }
 
     public void setupTasks() {
+        /*  I dont need this :D
         if (announcementTask != null)
             announcementTask.cancel();
 
@@ -235,6 +236,7 @@ public class AGP {
                     .intervalTicks(AGPConfig.Announcements.announcementTimer)
                     .submit(this);
         }
+        */
     }
 
     @Listener
